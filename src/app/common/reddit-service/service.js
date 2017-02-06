@@ -11,15 +11,7 @@ define(function () {
         }
 
         function getSubredditPosts(subreddit) {
-            // var url = buildSubredditUrl(subreddit)
-            // return http.get(url)
-            //     .then(function (response) {
-            //         var baseData = response.data.data;
-            //         var next = baseData.after;
-
-            //         return baseData.children.map(flattenPost);
-            //     })
-            return autoPagePosts([], subreddit, null, 0, 8);
+            return autoPagePosts([], subreddit, null, 0, 20);
         }
 
         function flattenPost(post) {

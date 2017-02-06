@@ -28,3 +28,35 @@
 .comment__replies {
     margin-left: 40px;
 }
+
+.search__renderer {
+    border: 1px solid white;
+}
+
+.search__renderer.ng-enter, .search__renderer.ng-exit {
+    transition: border 1s;
+}
+
+.search__renderer.ng-enter-active, .search__renderer.ng-exit-active {
+    border: 1px solid red;
+}
+
+.loading {
+    position: relative;
+    width: 100%;
+}
+
+.loading__icon {
+    margin: auto;
+    height: 75px;
+    width: 75px;
+    border: 1px solid black;
+
+    animation: LOADING 2s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes LOADING {
+    0% {transform: rotateZ(0)}
+    100% {transform: rotateZ(360deg)}
+}

@@ -1,13 +1,27 @@
 <div>
     <div>
-        <label for="searchTerm">Search</label>
-        <input type="text" name="searchTerm" ng-model="vm.searchTerm" ng-change="vm.searchReddit()">
-    </div>
-    <div>
         <label for="subreddit">Subreddit</label>
         <app-dropdown options="vm.subreddits" on-selected="vm.selectSubreddit(value)"></app-dropdown>
     </div>
-    <div>
-        <subreddit-result ng-repeat="post in vm.results" post="post"></subreddit-result>
+    <div ng-if="vm.isLoading" class="loading">
+        <div class="loading__icon">
+
+        </div>
     </div>
+    <div>
+        <button type="button" ng-click="vm.toggleVueComponent()">Toggle Renderer</button>
+    </div>
+    <div ng-if="!vm.isLoading">
+        <div ng-if="vm.toggleVue" class="search__renderer">
+            <h5>Rendered with Vue</h5>
+            <search-results-vue results="vm.results"></search-results-vue>
+        </div>
+        <div ng-if="!vm.toggleVue" class="search__renderer">
+            <h5>Rendered with Angular</h5>
+            <subreddit-result ng-repeat="post in vm.results" post="post"></subreddit-result>
+        </div>
+    </div>
+
+
+
 </div>

@@ -7,7 +7,9 @@ require.config({
         'uiRouter': 'https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.4.2/angular-ui-router',
         'ngStats': 'src/app/ng-stats-bootstrap',
         'lodash': 'https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min',
-        'ngAnimate': 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-animate'
+        'ngAnimate': 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-animate',
+        'fetch': 'https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.2/fetch.min',
+        'promise-polyfill': 'https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.0.5/es6-promise.min'
     },
     shim: {
         'angular': {

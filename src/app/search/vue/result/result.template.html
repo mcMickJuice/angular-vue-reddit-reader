@@ -1,0 +1,25 @@
+<div class="result">
+    <div class="result__details">
+        <div class="result__details__title">{{post.title}}</div>
+        <div>Score: {{post.score}}</div>
+        <div v-if="post.text.length > 0">
+            {{post.text}}
+        </div>
+    </div>
+    <div class="result__comments">
+        <span @click="loadComments" v-if="!commentsLoaded">Load Comments</span>
+        <span v-if="commentsLoaded" @click="toggleComments">
+            {{commentsHidden ? 'Show Comments' : 'Hide Comments'}}
+        </span>
+        <div v-if="commentsLoaded && comments.length > 0"
+            v-show="!commentsHidden">
+            <h3>Comments: {{this.comments.length}}</h3>
+
+            <subreddit-comment :comment="comment" v-for="comment in comments"></subreddit-comment>
+
+        </div>
+        <div class="result__comments--no-comments" v-if="noComments">
+            No Comments for this post
+        </div>
+    </div>
+</div>

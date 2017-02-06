@@ -1,0 +1,14 @@
+<div class="comment">
+    <div>{{comment.user}} -- {{comment.score}}</div>
+    <div>
+        {{comment.comment}}
+    </div>
+    <div v-if="comment.replies" class="comment__replies">
+        <h3 @click="toggleReplies">Replies</h3>
+        <subreddit-comment v-show="showReplies" 
+        :comment="reply" 
+        v-for="reply in comment.replies">
+
+        </subreddit-comment>
+    </div>
+</div>
