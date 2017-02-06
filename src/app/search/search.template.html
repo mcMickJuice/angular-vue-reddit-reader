@@ -1,0 +1,11 @@
+<div>
+    <div>
+        <label for="searchTerm">Search</label>
+        <input type="text" name="searchTerm" ng-model="vm.searchTerm" ng-change="vm.searchReddit()">
+    </div>
+    <div>
+        <label for="subreddit">Subreddit</label>
+        <app-dropdown options="vm.subreddits" on-selected="vm.selectSubreddit(value)"></app-dropdown>
+    </div>
+    <div></div>
+</div>
