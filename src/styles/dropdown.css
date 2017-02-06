@@ -1,0 +1,26 @@
+.dropdown {
+    border: 1px solid black;
+    width: 250px;
+}
+
+.dropdown__selected-option {
+    font-weight: bold;
+}
+
+.dropdown__select-list {
+
+}
+
+.dropdown__select-list.ng-enter, .dropdown__select-list.ng-exit {
+    transition: 0.3s linear all;
+    opacity: 0;
+}
+
+.dropdown__select-list.ng-enter-active, .dropdown__select-list.ng-exit-active {
+    opacity: 1;
+}
+
+.dropdown__select-list__item {
+    padding: 10px;
+    cursor: pointer;
+}

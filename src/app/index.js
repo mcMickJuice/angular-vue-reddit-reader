@@ -1,7 +1,12 @@
-require(['app/home/module', 'app/post/module', 'app/search/module', 'angular', 'uiRouter'], function (homeModule, postModule, searchModule) {
+require(['app/home/module'
+, 'app/post/module'
+, 'app/search/module'
+, 'angular'
+, 'uiRouter'
+, 'ngAnimate'], function (homeModule, postModule, searchModule) {
     
     
-    var app = angular.module('app', [homeModule, postModule, searchModule, 'ui.router'])
+    var app = angular.module('app', [homeModule, postModule, searchModule, 'ui.router', 'ngAnimate'])
         .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
             $urlRouterProvider.otherwise('/')
 

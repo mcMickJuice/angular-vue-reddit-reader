@@ -1,9 +1,12 @@
 <div class="dropdown">
-    <div class="dropdown__selected-option"
+    <div class="dropdown__selected-option dropdown__select-list__item"
     ng-click="vm.showList()"
     >{{vm.selected.label}}</div>
-    <div class="dropdown__select-list" ng-show="vm.listIsVisible">
-        <div ng-repeat="option in vm.options" ng-click="vm.selectOption(option)">
+    <div class="dropdown__select-list" ng-if="vm.listIsVisible">
+        <div ng-repeat="option in vm.options" 
+        ng-click="vm.selectOption(option)"
+        class="dropdown__select-list__item"
+        >
             {{option.label}}
         </div>
     </div>

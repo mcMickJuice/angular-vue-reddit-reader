@@ -1,0 +1,12 @@
+<div class="comment">
+    <div>{{vm.comment.user}} -- {{vm.comment.score}}</div>
+    <div>
+        {{vm.comment.comment}}
+    </div>
+    <div ng-if="vm.comment.replies" class="comment__replies">
+        <h3 ng-click="vm.toggleReplies()">Replies</h3>
+        <subreddit-comment ng-show="vm.showReplies" comment="reply" ng-repeat="reply in vm.comment.replies">
+
+        </subreddit-comment>
+    </div>
+</div>

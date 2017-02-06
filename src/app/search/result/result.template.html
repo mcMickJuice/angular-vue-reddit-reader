@@ -1,0 +1,26 @@
+<div class="result">
+    <div class="result__details">
+        <div class="result__details__title">{{vm.post.title}}</div>
+        <div>Score: {{vm.post.score}}</div>
+        <div ng-if="vm.post.text.length > 0">
+            {{vm.post.text}}
+        </div>
+    </div>
+    <div class="result__comments">
+        <span ng-click="vm.loadComments()" ng-if="!vm.commentsLoaded">Load Comments</span>
+        <span ng-if="vm.commentsLoaded" ng-click="vm.toggleComments()">
+            {{vm.commentsHidden ? 'Show Comments' : 'Hide Comments'}}
+        </span>
+        <div ng-if="vm.commentsLoaded && vm.comments.length > 0"
+            ng-show="!vm.commentsHidden">
+            <h3>Comments:</h3>
+
+            <subreddit-comment comment="comment" ng-repeat="comment in vm.comments"></subreddit-comment>
+
+        </div>
+        <div class="result__comments--no-comments" ng-if="vm.commentsLoaded && vm.comments.length == 0">
+            No Comments for this post
+
+        </div>
+    </div>
+</div>

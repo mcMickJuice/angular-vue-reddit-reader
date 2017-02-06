@@ -1,0 +1,30 @@
+.result {
+    border: 1px solid black;
+    margin-bottom: 5px;
+}
+
+.result__details {
+
+}
+
+.result__details__title {
+    font-weight: bold;
+}
+
+.result__comments {
+    margin-left: 20px;
+}
+
+.result__comment--no-comments {
+
+}
+
+.comment {
+    border: 1px solid gray;
+    margin-bottom: 5px;
+    padding: 10px;
+}
+
+.comment__replies {
+    margin-left: 40px;
+}

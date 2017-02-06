@@ -7,5 +7,7 @@
         <label for="subreddit">Subreddit</label>
         <app-dropdown options="vm.subreddits" on-selected="vm.selectSubreddit(value)"></app-dropdown>
     </div>
-    <div></div>
+    <div>
+        <subreddit-result ng-repeat="post in vm.results" post="post"></subreddit-result>
+    </div>
 </div>
