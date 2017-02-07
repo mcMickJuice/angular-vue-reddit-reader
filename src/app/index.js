@@ -11,16 +11,16 @@ require(['app/home/module'
             $urlRouterProvider.otherwise('/')
 
             $stateProvider
-                .state('home', {
-                    url: '/',
-                    template: '<app-home></app-home>'
-                })
+                // .state('home', {
+                //     url: '/',
+                //     template: '<app-home></app-home>'
+                // })
                 .state('search', {
                     url: '/search',
                     template: '<app-search></app-search>'
                 })
                 .state('post:id', {
-                    url: '/post',
+                    url: '/',
                     template: '<app-post></app-post>'
                 })
         }])

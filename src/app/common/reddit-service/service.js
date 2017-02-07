@@ -1,4 +1,8 @@
 define(function () {
+   //keep actual reddit service plain javascript that accepts $http (or same interface)
+    //ngRedditService will inject $http for use in angular app
+    //this provides flexibility in porting over the actual service to another library/framework
+
     function redditService(http) {
         var baseRedditUrl = 'https://www.reddit.com';
         function buildSubredditUrl(subreddit, nextPage) {
