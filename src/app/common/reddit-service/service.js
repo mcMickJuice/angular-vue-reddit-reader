@@ -24,7 +24,7 @@ define(function () {
                 var firstImage = data.preview.images[0];
                 var resolution = firstImage.resolutions[0];
 
-                //some posts have previe images but no resolutions
+                //some posts have preview images but no resolutions
                 if (resolution != null) {
                     previewImage = {
                         height: resolution.height,
