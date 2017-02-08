@@ -24,6 +24,9 @@ define(['text!./result.template.html'
             },
             toggleComments: function() {
                 this.commentsHidden = !this.commentsHidden
+            },
+            navigateToPost: function() {
+                this.$emit('on-post-navigate', this.post.id)
             }
         },
         computed: {

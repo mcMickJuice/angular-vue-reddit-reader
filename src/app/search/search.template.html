@@ -3,6 +3,11 @@
         <label for="subreddit">Subreddit</label>
         <app-dropdown options="vm.subreddits" on-selected="vm.selectSubreddit(value)"></app-dropdown>
     </div>
+    <div>
+        <label for="pageCount">Number of Pages (more pages == more dom elements == poorer performance)</label>
+        <div><input type="number" name="pageCount" ng-model="vm.pageCount" /></div>
+        
+    </div>
     <div ng-if="vm.isLoading" class="loading">
         <div class="loading__icon">
 
@@ -14,11 +19,11 @@
     <div ng-if="!vm.isLoading">
         <div ng-if="vm.toggleVue" class="search__renderer">
             <h5>Rendered with Vue</h5>
-            <search-results-vue results="vm.results"></search-results-vue>
+            <search-results-vue results="vm.results" subreddit="vm.selectedSubreddit.label"></search-results-vue>
         </div>
         <div ng-if="!vm.toggleVue" class="search__renderer">
             <h5>Rendered with Angular</h5>
-            <subreddit-result ng-repeat="post in vm.results" post="post"></subreddit-result>
+            <subreddit-result ng-repeat="post in vm.results" post="post" subreddit="vm.selectedSubreddit.label"></subreddit-result>
         </div>
     </div>
 

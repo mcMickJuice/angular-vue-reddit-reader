@@ -11,26 +11,28 @@ define(function () {
 
             vm.selectedSubreddit = selected;
             vm.isLoading = true;
-            redditService.getSubredditPosts(vm.selectedSubreddit.label)
-                .then(function(data) {
+            redditService.getSubredditPosts(vm.selectedSubreddit.label, vm.pageCount || 1)
+                .then(function (data) {
                     vm.results = data;
                     vm.isLoading = false;
                 })
         }
-        vm.toggleVueComponent = function() {
+        vm.toggleVueComponent = function () {
             vm.toggleVue = !vm.toggleVue;
         }
 
         //lifecycle hooks
 
         vm.$onInit = function () {
+            vm.pageCount = 5;
             vm.toggleVue = false;
             vm.subreddits = [
                 { value: 0, label: 'all' },
                 { value: 1, label: 'nfl' },
                 { value: 2, label: 'woahdude' },
                 { value: 3, label: 'movies' },
-                { value: 4, label: 'greenbaypackers' }
+                { value: 4, label: 'greenbaypackers' },
+                { value: 5, label: 'funny' }
             ]
             vm.results = []
 

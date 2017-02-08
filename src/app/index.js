@@ -19,8 +19,8 @@ require(['app/home/module'
                     url: '/search',
                     template: '<app-search></app-search>'
                 })
-                .state('post:id', {
-                    url: '/',
+                .state('post', {
+                    url: '/{subreddit}/{id}',
                     template: '<app-post></app-post>'
                 })
         }])

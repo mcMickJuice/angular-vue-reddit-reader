@@ -3,7 +3,8 @@ define(['text!./result.template.html', './controller'], function(template, contr
         template: template,
         controllerAs: 'vm',
         bindings: {
-            post: '<'
+            post: '<',
+            subreddit: '<'
         },
         controller: controller
     }

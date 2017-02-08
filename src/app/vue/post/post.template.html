@@ -1,0 +1,20 @@
+<div>
+    <div v-if="isLoadingPost">Loading Post</div>
+    <div v-if="!isLoadingPost">
+        <h3>{{post.title}} ({{post.score}})</h3>
+        <div v-if="hasPreviewImage">
+            <img v-bind:src="post.previewImage.url" 
+            width="200">
+        </div>
+        <div v-if="hasText">
+            {{post.text}}
+        </div>
+        <div>
+            <div v-if="!hasComments" @click="loadComments">Load Comments</div>
+            <div v-if="hasComments">
+                <h3>Comments</h3>
+                <comment v-for="comment in comments" :comment="comment"></comment>
+            </div>
+        </div>
+    </div>
+</div>

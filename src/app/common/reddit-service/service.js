@@ -1,5 +1,5 @@
 define(function () {
-   //keep actual reddit service plain javascript that accepts $http (or same interface)
+    //keep actual reddit service plain javascript that accepts $http (or same interface)
     //ngRedditService will inject $http for use in angular app
     //this provides flexibility in porting over the actual service to another library/framework
 
@@ -14,19 +14,19 @@ define(function () {
             return baseRedditUrl + postUrl + '.json';
         }
 
-        function getSubredditPosts(subreddit) {
-            return autoPagePosts([], subreddit, null, 0, 20);
+        function buildPostUrlFromId(id, subreddit) {
+            return baseRedditUrl + '/r/' + subreddit + '/comments/' + id + '.json'
         }
 
-        function flattenPost(post) {
-            //title, previewImage, score, permalink for comments, after
+        function getSubredditPosts(subreddit, pageCount) {
+            return autoPagePosts([], subreddit, null, 0, pageCount);
+        }
 
-            var data = post.data;
-
+        function extractPreviewImage(data) {
             var previewImage = null
             if (data.preview) {
                 var firstImage = data.preview.images[0];
-                var resolution = firstImage.resolutions[0];
+                var resolution = firstImage.source;
 
                 //some posts have preview images but no resolutions
                 if (resolution != null) {
@@ -38,13 +38,41 @@ define(function () {
                 }
             }
 
+            return previewImage
+        }
+
+        function flattenPostListing(post) {
+            var data = post.data;
+
             return {
                 title: data.title,
-                previewImage: previewImage,
+                previewImage: extractPreviewImage(data),
                 score: data.score,
                 postLink: data.permalink,
-                text: data.selftext
+                text: data.selftext,
+                id: data.id
             }
+        }
+
+        function getPostData(id, subreddit) {
+            var url = buildPostUrlFromId(id, subreddit)
+
+            return http.get(url)
+                .then(function (response) {
+                    var postHeading = response.data[0];
+
+                    var headingData = postHeading.data.children[0].data;
+
+                    return {
+                        text: headingData.selftext,
+                        author: headingData.author,
+                        score: headingData.score,
+                        postLink: headingData.permalink,
+                        title: headingData.title,
+                        previewImage: extractPreviewImage(headingData),
+                        numberOfComments: headingData["num_comments"]
+                    }
+                })
         }
 
         function getComments(postUrl) {
@@ -84,7 +112,7 @@ define(function () {
                     var baseData = response.data.data;
                     var next = baseData.after;
 
-                    var posts = baseData.children.map(flattenPost);
+                    var posts = baseData.children.map(flattenPostListing);
                     collection = collection.concat(posts);
 
                     if (currentPage >= maxPage || next == null) {
@@ -97,7 +125,8 @@ define(function () {
 
         return {
             getSubredditPosts: getSubredditPosts,
-            getComments: getComments
+            getComments: getComments,
+            getPostData: getPostData
         }
     }
 

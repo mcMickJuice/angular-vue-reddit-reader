@@ -2,7 +2,7 @@ define(['./component'
 , 'app/common/module'
 , './result/component'
 , './comment/component'
-, './vue/searchResultsBridge'
+, './searchResultsBridge'
 , 'angular'], function(searchComponent, commonModule, resultComponent, commentComponent, searchResultsVue) {
     var name = 'app.search'
 
