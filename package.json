@@ -12,7 +12,6 @@
   "author": "mcMickJuice",
   "license": "ISC",
   "devDependencies": {
-    "http-server": "^0.9.0",
     "live-server": "^1.2.0"
   }
 }
