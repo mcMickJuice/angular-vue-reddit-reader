@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "live-server"
+    "start": "live-server"
   },
   "keywords": [
     "angular",
@@ -12,7 +12,6 @@
   "author": "mcMickJuice",
   "license": "ISC",
   "devDependencies": {
-    "http-server": "^0.9.0",
     "live-server": "^1.2.0"
   }
 }
