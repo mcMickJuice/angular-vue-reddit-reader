@@ -22,9 +22,6 @@ define(['text!./post.template.html', '../search/comment/SubredditComment.vue'], 
                     vm.isLoadingPost = false;
                 })
         },
-        destroyed: function() {
-            console.log('Post component destroyed')
-        },
         methods: {
             loadComments: function () {
                 var redditService = this.$injector('redditService')

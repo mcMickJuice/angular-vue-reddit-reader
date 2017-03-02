@@ -7,12 +7,10 @@ define(['vue', '../vue/injectorPlugin', '../vue/post/Post.vue'],function(Vue, in
             restrict: 'E',
             link: function($scope, elem, link) {
                 var plugin = injectorPlugin.plugin($injector);
-
+                
+                //this will register $injector with Vue and make it 
+                //available in each vue component instance
                 Vue.use(plugin);
-
-
-                // var mappedServices = injectorPlugin.mapInjector(['redditService'])
-
 
                 var vueInstance = new Vue({
                     el: elem[0],

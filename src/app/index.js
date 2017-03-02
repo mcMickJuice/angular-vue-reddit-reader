@@ -8,13 +8,9 @@ require(['app/home/module'
     
     var app = angular.module('app', [homeModule, postModule, searchModule, 'ui.router', 'ngAnimate'])
         .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
-            $urlRouterProvider.otherwise('/')
+            $urlRouterProvider.otherwise('/search')
 
             $stateProvider
-                // .state('home', {
-                //     url: '/',
-                //     template: '<app-home></app-home>'
-                // })
                 .state('search', {
                     url: '/search',
                     template: '<app-search></app-search>'
