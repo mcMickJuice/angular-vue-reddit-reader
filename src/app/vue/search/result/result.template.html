@@ -2,7 +2,7 @@
     <div class="result__details">
         <div class="result__details__title">{{post.title}}</div>
         <div @click="navigateToPost">
-            Go to Post
+            <a href="">Go to Post</a> 
         </div>
         <div>Score: {{post.score}}</div>
         <div v-if="post.text.length > 0">

@@ -18,6 +18,9 @@ define(['vue', '../vue/search/result/Result.vue'],function(Vue, Result) {
                     },
                     mounted: function() {
                         var vm = this;
+                        //when results change, set changes on the vue component
+                        //instance. Vue's change detection will pick up on these changes
+                        //and update accordingly
                         $scope.$watch(function() {
                             return $scope.results
                         }, function(newResults) {
@@ -30,12 +33,15 @@ define(['vue', '../vue/search/result/Result.vue'],function(Vue, Result) {
                         })
                     },
                     methods: {
+                        //vue component methods can simply call angular service/methods
                         onPostNavigate: function(id) {
                             $state.go('post', {id: id, subreddit: $scope.subreddit})
-                            // console.log('navigate to post id ', id)
                         }
                     },
-                    template: '<div><result v-for="result in results" :post="result" @on-post-navigate="onPostNavigate"></result></div>',
+                    template: '<div> \
+                                <result v-for="result in results" :post="result" @on-post-navigate="onPostNavigate">\
+                                </result>\
+                            </div>',
                     components: {
                         'result': Result
                     }
